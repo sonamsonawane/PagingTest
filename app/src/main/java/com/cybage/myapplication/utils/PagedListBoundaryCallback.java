@@ -16,14 +16,12 @@ public class PagedListBoundaryCallback extends PagedList.BoundaryCallback<Record
 
     private final AppController appController;
     private RecordsDBRepository recordsDBRepository;
-    AppExecutors executors;
     private MutableLiveData networkState;
     private MutableLiveData initialLoading;
 
-    public PagedListBoundaryCallback(RecordsDBRepository recordsDBRepository, AppExecutors executors, AppController appController) {
+    public PagedListBoundaryCallback(RecordsDBRepository recordsDBRepository, AppController appController) {
         super();
         this.recordsDBRepository = recordsDBRepository;
-        this.executors = executors;
         networkState = new MutableLiveData();
         initialLoading = new MutableLiveData();
         this.appController = appController;

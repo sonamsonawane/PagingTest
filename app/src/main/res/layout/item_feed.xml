@@ -69,7 +69,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_placeholder"
+            app:srcCompat="@drawable/ic_data_usage"
             android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

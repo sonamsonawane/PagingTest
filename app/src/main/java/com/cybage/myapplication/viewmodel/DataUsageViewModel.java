@@ -3,7 +3,6 @@ package com.cybage.myapplication.viewmodel;
 import com.cybage.myapplication.AppController;
 import com.cybage.myapplication.database.RecordsDBRepository;
 import com.cybage.myapplication.model.Records;
-import com.cybage.myapplication.utils.AppExecutors;
 import com.cybage.myapplication.utils.NetworkState;
 import com.cybage.myapplication.utils.PagedListBoundaryCallback;
 
@@ -16,7 +15,6 @@ import androidx.paging.PagedList;
 public class DataUsageViewModel extends ViewModel {
 
     private final RecordsDBRepository recordsDBRepository;
-    private final AppExecutors executor;
     private LiveData<NetworkState> networkState;
     private LiveData<PagedList<Records>> dataRecordsLiveData;
 
@@ -26,7 +24,6 @@ public class DataUsageViewModel extends ViewModel {
 
     public DataUsageViewModel(@NonNull AppController appController) {
         this.appController = appController;
-        executor = new AppExecutors();
         recordsDBRepository = new RecordsDBRepository(appController);
 
         init();
@@ -35,7 +32,7 @@ public class DataUsageViewModel extends ViewModel {
     private void init() {
 
 
-        pagedListBoundaryCallback = new PagedListBoundaryCallback(recordsDBRepository, executor, appController);
+        pagedListBoundaryCallback = new PagedListBoundaryCallback(recordsDBRepository, appController);
         networkState = pagedListBoundaryCallback.getNetworkState();
 
         PagedList.Config pagedListConfig =
